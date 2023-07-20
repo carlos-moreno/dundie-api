@@ -3,14 +3,15 @@ name = "dundie"
 description = "Rewards API for Dunder Mifflin"
 authors = [
     {name = 'Bruno Rocha', email = 'rochacbruno@gmail.com'},
+	{name = 'Carlos Moreno', email = 'omorenodovale@gmail.com'},
 ]
 requires-python = ">=3.8"
 license = {text = "MIT"}
 dynamic = ["version", "readme", "dependencies"]
 
 [project.urls]
-Homepage = 'https://github.com/rochacbruno/dundie-api'
-Source = 'https://github.com/rochacbruno/dundie-api'
+Homepage = 'https://github.com/carlos-moreno/dundie-api'
+Source = 'https://github.com/carlos-moreno/dundie-api'
 
 [project.optional-dependencies]
 dev = [
