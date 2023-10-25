@@ -53,6 +53,11 @@ class UserRequest(BaseModel):
             values["username"] = generate_username(values["name"])
         return values
 
+class UserProfilePatchRequest(BaseModel):
+    avatar: Optional[str] = None
+    bio: Optional[str] = None
+
+
 
 def generate_username(name: str) -> str:
     """Generates a slug username from a name"""
