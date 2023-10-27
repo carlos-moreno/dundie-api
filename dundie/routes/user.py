@@ -7,6 +7,7 @@ from fastapi.exceptions import HTTPException
 from sqlmodel import Session, select
 
 from dundie.db import ActiveSession
+from dundie.tasks.user import try_to_send_pwd_reset_email
 from dundie.models.user import User, UserRequest, UserResponse, UserProfilePatchRequest, UserPasswordPatchRequest
 
 from dundie.auth import AuthenticatedUser, CanChangeUserPassword, SuperUser
@@ -87,4 +88,13 @@ async def change_password(
     session.commit()
     session.refresh(user)
     return user
+
+
+@router.post("/pwd_reset_token/")
+async def send_password_reset_token(*, email: str = Body(embed=True)):
+    """Sends an email with the token to reset password."""
+    try_to_send_pwd_reset_email(email)
+    return {
+        "message": "If we found a user with that email, we sent a password reset token to it."
+    }
 
